@@ -1,0 +1,466 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+h1
+{
+    font-size: 40px;
+    color: white;
+    width: 500px;
+    margin-left: 450px;
+    margin-top: 0px;
+    padding-top: 20px;
+    margin-bottom: 0px;
+}
+p
+{
+    color: #ffff;
+    font-weight: bold;
+}
+a
+{
+    color: darkgray;
+    font-weight: bold;
+    font-weight: unset;
+
+}
+nav
+{
+    padding-left: 0px;
+    height: 220px;
+}
+ul
+{
+    padding-left: 0px;
+    margin-bottom: 0px;
+    height: 250px;
+    margin-top: 0px;
+
+
+}
+ol
+{
+    padding: 0px;
+}
+.ol2
+{
+  
+    width: 100px;
+    margin-left: 160px;
+    padding-top: 30px;
+    font: bold large bolder;
+
+}
+button
+{
+    width: 300px;
+    height: 63px;
+    border-right-width: 0px;
+    border: #ffffff;
+    font-weight: bold;
+    text-align: left;
+    padding-right: 0px;
+    padding-left: 20px;
+    font-weight: bold;
+    font-weight: unset;
+}
+.header
+{
+    
+    height:100px;
+   background-color: rgb(0, 36, 36);
+}
+img
+{
+    position: absolute;
+    width: 70px;
+    height: 100px;
+    top: 10px;
+}
+.content
+{
+    width: 1094px;
+    height: 700px;
+    image-resolution: 1326px;
+    background-image: url(../Images/img-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 1094px;
+    
+}
+.content .menu2
+{
+    width:400px;
+    height: 300px;
+    position: absolute;  
+    right: 0px;
+    top: 90px;
+    left: 350px;
+    height: 500px;
+    width: 500px;
+    background-color: #fbfafa;
+    box-shadow: 0 0 8px #c1c1c1;
+    background-color: white;
+
+}
+#container
+{
+    top: 200px;
+    left: 400px;
+    width: 400px;
+    height: 330px;
+    position: absolute;
+    border-radius: 20px;
+}
+#container .bar2
+{
+    height: 60px;
+    background-color: darkturquoise;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+#container .x
+{
+    text-decoration:none; 
+    color: #ffff;
+    margin-bottom: 0px;
+    position: absolute;
+    left: 350px;
+    top: 27px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#formu
+{
+    width: 400px; 
+    height: 270px;
+    background-color: #ffff;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    
+}
+#formu .form-control
+{
+    width: 350px; 
+    height: 40px; 
+    padding-left: 10px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.valide
+{
+    margin-top: 25px;
+
+}
+.error-form
+{
+    color: red;
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    
+}
+.icon-form
+{
+    height: 40px;
+    width: 40px;
+    position: relative;    
+    left: 350px;  
+    top: 55px;
+
+
+}
+.icon-form-login
+{
+    background-image: url(../Images/Icônes/ic-login.png);
+    background-repeat: no-repeat;
+}
+.icon-form-pwd
+{
+    background-image: url(../Images/Icônes/ic-password.png);
+    background-repeat: no-repeat;
+}
+.bouton
+{
+    width: 115px;
+    height: 50px;
+    margin-left: 20px;
+    background-color: darkturquoise;
+    font-weight: bold;
+    border: 1px solid darkturquoise;
+    border-radius: 5px;
+    padding: 18px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-color: #ffff;
+    font: bold, #ffffff ;
+    color: #ffff;
+    margin-right: 50px;
+    text-decoration: none;
+    
+}
+.admin1
+{
+    background-color: #ffffff;
+    position: absolute; 
+    width: 1000px;
+    height: 600px;
+    left: 40px;
+}
+.admin2
+{
+    background-color: #ffffff;
+    position: absolute; 
+    width: 1000px;
+    height: 600px;
+    left: 40px;
+    top: 120px;
+    height: 650px;
+    border-radius: 5px;
+
+}
+.header1
+{
+    height: 80px;
+    background-color:#51bfd0;
+
+}
+.header2
+{
+    height: 80px;
+    background-color:#51bfd0;
+
+}
+.text
+{   
+    
+    margin-left: 350px;
+    width: 500px;
+    position: absolute;
+    color: white;
+}
+.deconnecter
+{  
+    margin-left: 0px;
+    position: absolute;    
+    top: 20px;
+    left: 870px;
+    width: 100px;
+    height: 40px;
+    border-radius: 3px;
+    border: blanchedalmond;
+    background-color: darkturquoise;
+    box-shadow: 0 0 6px #9a9090;
+    color: white;
+    text-decoration: none;
+    color: #ffffff;
+    
+   
+
+}
+.form-admin 
+{
+     
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: white;
+    color: white;
+    box-shadow: 0px 0px 7px #cec8c8;
+
+}
+.liste-question
+{
+    background-image: url(/Quizz/public/Images/Icônes/ic-liste.png/);
+    background-image: url();
+}
+.menu1
+{
+    margin-top: 30px;
+}
+.form-menu
+{
+    
+    text-decoration: none;
+    
+}
+.head-menu
+{
+    height: 150px;
+    width: 300px;
+    background-color: #51bfd0;
+    color: white;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    box-shadow: inset 0px 20px 11px 0px white;
+    
+}
+.image1
+{
+    
+    top: 90px;
+    width: 100px;
+    left: 10px;
+
+}
+.listej
+{
+    width:400px;
+    height: 300px;
+    position: absolute;  
+    right: 0px;
+    top: 90px;
+    left: 350px;
+    height: 500px;
+    width: 500px;
+    background-color: #fbfafa;
+    box-shadow: 0 0 8px #c1c1c1;
+
+}
+.listej2
+{
+    width: 300px;
+    height: 400px;
+    background-color: lightseagreen;
+    margin: 20px;
+    margin-left: 50px;
+    width: 400px;
+    margin-bottom: 50px;
+    height: 350px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 0px 1px #51bfd0;
+    background-color: white;
+    
+}
+.entete
+{
+    color: #818181;
+    font-style: italic;
+    margin-left: 90px;
+    margin-top: 50px;  
+}
+.text1
+{
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 570px;
+    right: 200px;
+    margin-left: 0px;
+    top: 0px;
+}
+.menu2
+{
+    
+    width: 100px;
+    height: 0px;
+    left: 10px;
+    top: 60px;
+}
+.form2
+{
+    margin-left: 25px;
+    margin-top: 10px;
+    width: 950px;
+    height: 550px;
+    box-shadow: 0 0 16px #868686;
+    border-radius: 5px;
+}
+.form-question
+{
+    width: 600px;
+    height: 500px;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-top: 0px;
+    box-shadow: 0 0 0px 1px black;
+    position: absolute;
+    top: 100px;
+    border-radius: 5px;
+}
+.question1
+{
+    width: 560;
+    height: 130px;
+    margin: 20px;
+    background-color: rgba(238, 238, 238, 0.979);
+
+}
+.precedent
+{
+    margin-left: 0px;
+    position: absolute;    
+    top: 20px;
+    left: 870px;
+    width: 100px;
+    height: 40px;
+    border: blanchedalmond;
+    background-color: #818181;
+    box-shadow: 0 0 6px #9a9090;
+    color: white;
+    text-decoration: none;
+    color: #ffffff;
+    left: 20px;
+    top: 430px;
+
+    
+}
+.suivant
+{
+    margin-left: 0px;
+    position: absolute;    
+    top: 20px;
+    left: 870px;
+    width: 100px;
+    height: 40px;
+    border: blanchedalmond;
+    background-color: darkturquoise;
+    box-shadow: 0 0 6px #9a9090;
+    color: white;
+    text-decoration: none;
+    color: #ffffff;
+    left: 480px;
+    top: 430px;
+    
+}
+.Qh2
+{
+    text-align: center;
+    text-decoration: underline;
+}
+.Qh3
+{
+    text-align: center;
+}
+.Q1
+{
+    margin-left: 80px;
+    margin-top: 50px;
+    height: 200px;
+}
+#html
+{
+    margin: 1px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 0 0 0 1px #00c1fb;
+
+}
+.score
+{
+    width: 250px;
+    height: 400px;
+    position: absolute;
+    left: 700px;
+    top: 130px;
+    box-shadow: 0 0 6px #c1c1c1;
+    border-radius: 3px;
+
+
+}
+.liste-score
+{
+    margin-left: 50px;
+}

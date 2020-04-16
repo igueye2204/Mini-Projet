@@ -1,0 +1,27 @@
+[
+        {
+                "prenom": "elzo",
+            "nom": "Diarra",
+            "login": "free14",
+            "password": "free",
+            "photo": "free.jpg"
+        },
+    {
+            "prenom": "awa",
+            "nom": "Carol",
+            "login": "awa3",
+            "password": "awa",
+            "photo": "awa.jpg"
+
+    },
+    {
+            "prenom": "Ibou",
+            "nom": "gueye",
+            "profil": "admin",
+            "login": "Ibou22",
+            "password": "ibou",
+            "photo": "ibou.jpg"   
+    }
+
+]
+    
