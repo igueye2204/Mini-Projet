@@ -1,4 +1,5 @@
 <?php
+       
 
     function getData($file="utilisateur")
     {
@@ -8,7 +9,15 @@
         return $data;
     }
 
-    function connexion($login,$pwd)
+    function getEncode($file="utilisateur")
+    {
+        $data = json_encode($data);
+        file_put_contents("Quizz/data/".$file.".json", $data);
+
+        return $data;
+    }
+
+    function connexion($login, $pwd)
     {
         $users=getData();
         foreach($users as $key => $user)
@@ -30,6 +39,28 @@
         return "error";
     }
 
+    function inscription($login)
+    {
+        $users=getData();
+        foreach($users as $key => $user)
+        {
+            if ($user["login"]===$login) 
+            {   
+                $_SESSION['user']=$user;
+                $_SESSION['statut']="login";
+                if($user["profil"] === "admin")
+                {
+                    return "accueil";
+                }
+                else
+                {
+                    return "connexion";
+                }
+            }
+        }
+        return "error";
+    }
+
     function is_connect()
     {
         if (!isset($_SESSION['statut'])) 
@@ -45,10 +76,7 @@
         session_destroy();
     }
 
-    function isEmail($login) 
-    {
-        return filter_var($login, FILTER_VALIDATE_EMAIL);
-    }
+
 
 
 ?>

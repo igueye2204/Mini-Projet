@@ -11,8 +11,7 @@
         <h1>Le plaisir de jouer</h1>
         <img src="Quizz/public/Images/logo-QuizzSA.png" alt=""> 
     </div>
-    <div id="bar">
-         
+    <div id="bar">     
     </div> 
     <div class="content">
         <?php
@@ -27,13 +26,16 @@
                         case "accueil":
                             require_once("Quizz/pages/admin.php");
                             break;
-                        
                         case "jeux":
                             require_once("Quizz/pages/jeux.php");
                             break;
                         case "inscription";
                             require_once("Quizz/pages/creationCompte.php");
-                        break;
+                            break;
+                        case "connexion";
+                            require_once("Quizz/pages/connexion.php");
+                            break;
+
                     }
                 }
                 else

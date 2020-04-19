@@ -2,12 +2,13 @@
 <div class="admin2">
     <div class="header2">
     <div class="">
-            <img src="Quizz/public/Images/logo-QuizzSA.png" alt="" sizes="10px" srcset="" style="top: 10px; width: 60px; height:60px; border-radius:50%; left: 10px;">
-            <div class="menu2" style="width: 100px;height: 0px;left: 10px;top: 60px; color: white;">  
+            <img src="<?=$_SESSION['user']['avatar']?>" alt="" sizes="10px" srcset="" style="top: 10px; width: 60px; height:60px; border-radius:50%; left: 10px;">
+            <div class="menu2" style="width: 100px;height: 0px;left: 10px;top: 60px; color: white;margin-left: 0px;padding-left: 0px;">  
                 <?php
                     is_connect();
                         echo $_SESSION['user']['prenom']." ";
                         echo $_SESSION['user']['nom'];
+                        
                 ?> 
             </div>
         </div>
@@ -37,14 +38,9 @@
                 <button class="suivant">Suivant</button>
             </div>
             <div class="score">
-                <p style="width: 80px;margin-left: 10px;margin-left: 10px; color:#818181">Top scores</p> 
-                <p style="width: 100px;margin-left: 10px;top: 0px;left: 85px; color:#818181; position:absolute;">Mon Meilleur scores</p>
-                <div class="liste-score"><br>
-                    <br> Ibou GUEYE &emsp; 18 pts <br>
-                    Elzo FREE &emsp; 15 pts <br>
-                    Awa CAROL &emsp; 13pts <br>
-                    Modou MENDY &emsp; 8pts <br>
-                    Aicha DIENG &emsp; 7pts
+                <p style="width: 150pxmargin-left: 0px;top: 0px;left: 50px; color:#818181; position:absolute;">Mon Meilleur scores</p>
+                <div class="liste-score" style="margin-top: 50px;margin-left: 30px;">
+                    <?= $_SESSION['user']['prenom']."&emsp;".$_SESSION['user']['nom']."<br>"?>
                 </div>
             </div>
         </div>

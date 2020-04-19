@@ -1,71 +1,145 @@
 <?php
-$error1=$error2="";
+
+ $json=array();
+$error=$error1=$error2=$error3=$error4=$error5=$error6=$error7="";
+$issucces=false;
 if (isset($_POST['submit'])) 
 {
     
-    $json=array();
-    $json['prenom']=$_POST['prenom'];
-    $json['nom']=$_POST['nom'];
-    $json['login']=$_POST['login'];
-    $json['password']=$_POST['password'];
-    $json['passwordconfirm']=$_POST['passwordconfirm'];
+    $json=[
+        'prenom' => $_POST['prenom'],
+        'nom' => $_POST['nom'],
+        'login' => $_POST['login'],
+        'password' => $_POST['password'],
+        'passwordconfirm' => $_POST['passwordconfirm'],
+        'avatar' => 'Quizz/public/Images/'.$_FILES['avatar']['name']
+        ];
+    $file = $_FILES['avatar']['tmp_name'];
+    $destination= 'Quizz/public/Images/';
+    $name = $_POST['prenom'].".jpg";
+    $jsons = "Quizz/data/utilisateur.json";
+    $issucces=true;
     
-    if (!($json['password']==$json['passwordconfirm'])) 
+    if(empty($json['prenom']) || empty($json['nom']) || empty($json['login']) || empty($json['password']) || empty($json['passwordconfirm']))
+    {
+        $error2="Tous les champs sont obligatoire!";
+        $issucces=false;
+    }
+    if ($json['password']!=$json['passwordconfirm']) 
     {
         $error1="les mots de passe saisies sont différents!";
+        $issucces=false;
     }
-    elseif(empty($json['prenom']) || empty($json['nom']) || empty($json['login']) || empty($json['password']) || empty($json['passwordconfirm']) )
+    $extension=strrchr($_FILES['avatar']['name'], '.');
+    $extensions = array('.png','.jpeg');
+    if (!in_array($extension, $extensions)) 
     {
-        $error2="ce champs est obligatoire!";
+        $error = "Vous devez uploader un fichier de type png ou jpeg";
+        $issucces=false;
+    }
+    $tmp_file =$_FILES['avatar']['tmp_name'];
+    if (!(is_uploaded_file($tmp_file))) 
+    {
+        $error3 = "le fichier n'est pas une image !";
+        $issucces=false;
+    }
+    if (!isset($issucces))
+    {
+        $resultat = move_uploaded_file($_FILES["avatar"]["tmp_name"],$destination.$name);
+        $uploadfile = $destination.basename($name);
+        if ($resultat) 
+        {
+            $error4 = "Upload effectué avec succès !";  
+            $issucces=true;
+        }
+        else
+        {
+            $error7 = "Echec de l'upload !";
+            $issucces=false;
+        }   
     }
     else
     {
-        $js = file_get_contents('utilisateur.json');
-        $js = json_decode($js, true);
+        
+        $issucces=false;
+    }
+    $js= file_get_contents("Quizz/data/utilisateur.json");
+    $js=json_decode($js,true);
+    if ($json['login'] != $js['login'])
+        {
+            $issucces = true;
+        }
+        else
+        {
+            echo "Ce login existe déja essai un autre !";
+            $issucces = false;
+            
+            
+        }
+    if(isset($issucces))
+    {
+        
         $js[] = $json;
         $js = json_encode($js);
-        file_put_contents('utilisateur.json', $js);
-        header("Location: ./");
+        file_put_contents('Quizz/data/utilisateur.json', $js);
+        
+        $results = inscription($json['login']);
+        if ($results==="error") 
+        {
+            $result0= "il y a une erreur dans les données saisies ! ";
+        }
+        else
+        {
+            header("location:index.php?lien=".$results);
+        }
     }
+    
+
 }
 ?>
-<div class="menu2" style="background-color: white;width: 800px;margin-left: 145px;border-radius: 5px;padding-left: 50px;height: 700px;box-shadow: 0 0 20px #6d6d6d;left: 0px;top: 100px;">
-    <br><h3 style="color: #818181">S’INSCRIRE</h3>
-    <p style="color: #818181;">Pour tester votre niveau de culture général</p><br>
-    <div style="height: 5px;width: 500px;margin-right: 100px;color: #818181;background-color: #818181;position:absolute;left: 0px;top: 120px;"></div>
-    <div>
-        <label for="" style="color: #818181;font-size: larger;">Prenom</label><br>
-        <input type="text" name="prenom"style="width: 350px;height: 35px;border-radius: 3px;border: 1px solid white;box-shadow: 0 0 1px black;">
-        <div><?=$error2 ?></div>
-    </div>
-    <div>
-        <label for="" style="color: #818181;font-size: larger;">Nom</label><br>
-        <input type="text" name="nom"style="width: 350px;height: 35px;border-radius: 3px;border: 1px solid white;box-shadow: 0 0 1px black;">
-        <div><?=$error2 ?></div>
-    </div>
-    <div>
-        <label for="" style="color: #818181;font-size: larger;">Login</label><br>
-        <input type="text" name="login" style="width: 350px;height: 35px;border-radius: 3px;border: 1px solid white;box-shadow: 0 0 1px black;">
-        <div><?=$error2 ?></div>
-    </div>
-    <div>
-        <label for="" style="color: #818181;font-size: larger;">Password</label><br>
-        <input type="text" name="password" style="width: 350px;height: 35px;border-radius: 3px;border: 1px solid white;box-shadow: 0 0 1px black;">
-        <div><?=$error2 ?></div><div><?=$error1 ?></div>
-    </div>
-    <div>
-        <label for="" style="color: #818181;font-size: larger;">confirmer Password</label><br>
-        <input type="text" name="passwpordconfirm" style="width: 350px;height: 35px;border: 1px solid darkturquoise;border-radius: 5px;font: #ffffffbox-shadow: 0 0 1px black;">
-        <div><?=$error2 ?></div><div><?=$error1 ?></div>
-    </div>
-    <div>  
-        <br><br><button style="width: 125px;height: 32px;padding-left: 5px;margin-left: 240px;font-weight: bold;font-weight: unset;"><a href="#" style="color: white;border-right-width: 0px;border: #ffffff;font-weight: bold;font-weight: bold;text-decoration: none; background-color: darkturquoise;border-radius: 5px;border: 1px solid;">Choisir un fichier</a></button>
-    </div>
-    <div>  
-        <br><br><input type="submit" style="width: 100px;height: 30px;margin-left: 100px;background-color: darkturquoise;font-weight: bold;border: 1px solid darkturquoise;border-radius: 5px;font: #ffffff;color: white ;" name="submit" value="Crée Compte">
-    </div>
-    <div  >
-        <img src="Quizz/public/Images/logo-QuizzSA.png" alt="" sizes="10px" srcset="" style="position:absolute;top: 50px; width: 200px; height:200px; border-radius:50%; left: 600px;">
-        <label for="" style="position:absolute;left: 650px;top: 250px;">Avatar du joueur</label>
-    </div>
+<div class="menu2" >
+    <br><h3 class="h3i">S’INSCRIRE</h3>
+    <p class="p2">Pour tester votre niveau de culture général</p><br>
+    <div class="menu-inscrire"></div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="" class="label" >Prenom</label><br>
+                <input type="text" class="input1" name="prenom">
+                <br>
+            </div>
+            <div>
+                <label for="" class="label">Nom</label><br>
+                <input type="text" class="input1" name="nom">
+                <br>
+            </div>
+            <div>
+                <label for="" class="label">Login</label><br>
+                <input type="text" error="error-3"name="login" class="input1" >
+                <br>
+            </div>
+            <div>
+                <label for="" class="label" >Password</label><br>
+                <input type="password" name="password" class="input1" >
+                <div style="color: red;text-shadow: 0 0 3px #c7c7c7;"><?=$error1 ?></div><br>
+            </div>
+            <div>
+                <label for="" class="label" >confirmer Password</label><br>
+                <input type="password" name="passwordconfirm" class="input1" >
+                <div style="color: red;text-shadow: 0 0 3px #c7c7c7;"><?=$error1 ?></div><br><div style="color: red;text-shadow: 0 0 3px #c7c7c7;" ><?=$error2 ?></div>
+            </div>
+            <div>
+                <img src="Quizz/public/Images/logo-QuizzSA.png" alt="" sizes="10px" srcset="" class="img-inscrire"><br>
+                <label for="" class="nom-avatar">Avatar du joueur</label>
+            </div>
+            <div>
+                <input type="file" name="avatar" style="background-color: darkturquoise;color: white;box-shadow: 0 0 0px 2px #00BCD4;width: 255px;height: 22px;padding-left: 0px;margin-left: 0px;">
+                 <br><br><div style="color: red;text-shadow: 0 0 3px #c7c7c7;"><?=$error7?><br><?=$error?></div>
+            </div> 
+            <div>  
+            <br><br><input type="submit" class="input-submit" name="submit" value="Crée Compte">
+            </div>
+        </form>
+    
+    <p style="display:<?php if($issucces){echo 'block';}else{echo 'none';}?>; color: blue; margin-right 50px;">Votre incription a correctement été enregistrée</p>
 </div>
+
