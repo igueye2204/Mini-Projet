@@ -1,21 +1,29 @@
 
 <?php 
+
     $msg="";
     if (isset($_POST['btn_submit'])) 
     {
-        $login=$_POST['login'];
-        $pwd=$_POST['pwd'];
-        $result= connexion( $login,$pwd);
-        
-        if ( $result==="error") 
+        $login= htmlspecialchars(trim($_POST['login']));
+        $pwd= htmlspecialchars(trim($_POST['pwd']));
+        if (empty($login) || empty($pwd)) 
         {
-            $msg="login ou Mot de passe Incorrect";  
+            $message = 'Remplir tous les champs !';
         }
         else
         {
-            header("location:index.php?lien=".$result);
-        }
+            $result= connexion( $login,$pwd);
+            if ( $result==="error") 
+            {
+                $msg="login ou Mot de passe Incorrect";  
+            }
+            else
+            {
+                header("location:index.php?lien=".$result);
+            }
+        }    
     }
+
 ?> 
     <div id="container">
         <div class="bar2">
@@ -30,7 +38,6 @@
                     <div class="icon-form icon-form-login"></div>
                             <input type="text" name="login" error="error-1" placeholder="Login" value="" class="form-control">
                     <div class="error-form" id="error-1"></div>
-
                     <div class="icon-form icon-form-pwd"></div>
                         <input type="password" name="pwd" error="error-2" placeholder="Password" value="" class="form-control">
                         <div class="error-form" id="error-2"></div>

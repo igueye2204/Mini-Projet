@@ -39,26 +39,19 @@
         return "error";
     }
 
-    function inscription($login)
+    
+    function is_login($log)
     {
         $users=getData();
         foreach($users as $key => $user)
         {
-            if ($user["login"]===$login) 
-            {   
-                $_SESSION['user']=$user;
-                $_SESSION['statut']="login";
-                if($user["profil"] === "admin")
-                {
-                    return "accueil";
-                }
-                else
-                {
-                    return "connexion";
-                }
-            }
+            if ($user["login"] === $log)
+            {
+                return true;
+                
+            }  
         }
-        return "error";
+        return false;  
     }
 
     function is_connect()
@@ -75,7 +68,26 @@
         unset($_SESSION['statut']);
         session_destroy();
     }
-
+    
+    function inscription($login)
+    {
+        $users=getData();
+        foreach($users as $key => $user)
+        {
+            if ($user['login']===$login) 
+            {   
+                if($user['profil'] === "admin")
+                {
+                    return "accueil";
+                }
+                else
+                {
+                    return "connexion";
+                }
+            }
+        }
+        return "error";
+    }
 
 
 
